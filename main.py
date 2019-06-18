@@ -57,11 +57,12 @@ def get_video(link):
 
 
 if __name__ == "__main__":
+    process = input("사용할 프로세스 개수를 입력하세요: ")
     vod_id = input("VOD ID를 입력하세요: ")
     print("\nGETTING TOKEN FROM AUTHORIZATION\n")
     parsed_URL_Token = URL_GET_TOKEN % vod_id
     r = requests.get(parsed_URL_Token, headers={"Client-ID": CLIENT_ID})
-    if r.status_code != requests.codes.ok:
+    if r.status_code != 200:
         print("Failed to get authorization token")
         exit()
 
@@ -105,7 +106,7 @@ if __name__ == "__main__":
     if not os.path.isdir(TMP_DIR):
         os.mkdir(TMP_DIR)
     start_time = time.time()
-    pool = Pool(processes=8)
+    pool = Pool(processes=process)
     pool.map(get_video, parts)
     print("--- %s seconds ---" % (time.time() - start_time))
 
@@ -118,8 +119,7 @@ if __name__ == "__main__":
         list_em_texto.write("file '" + os.path.join(TMP_DIR, file) + "'\n")
     list_em_texto.close()
 
-    subprocess.run(["ffmpeg", "-f", "concat", "-safe", "0", "-i", "list_parts.tmp", "-c", "copy", "%s.mp4" % vod_id],
-                   shell=True, capture_output=True)
+    subprocess.run(["ffmpeg -f concat -safe 0 -i list_parts.tmp -c copy %s.mp4" % vod_id])
 
     shutil.rmtree(os.path.join(os.getcwd(), "tmp"), ignore_errors=True)
 
