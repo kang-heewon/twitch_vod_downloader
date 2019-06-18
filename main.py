@@ -106,7 +106,7 @@ if __name__ == "__main__":
     if not os.path.isdir(TMP_DIR):
         os.mkdir(TMP_DIR)
     start_time = time.time()
-    pool = Pool(processes=process)
+    pool = Pool(processes=int(process))
     pool.map(get_video, parts)
     print("--- %s seconds ---" % (time.time() - start_time))
 
