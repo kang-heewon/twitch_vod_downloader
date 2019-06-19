@@ -14,6 +14,7 @@ python3 main.py
 * 인터넷 속도, 컴퓨터 사양에 따라 차이가 있을 수 있습니다.
 
 15:11초 160p30 기준 영상 다운로드 12.7136초
+5:31:13초 1080p60 기준 영상 다운로드 4331.1421초 ( 1시간 20분 정도 )
 
 ## developer
 * kang-heewon [ https://github.com/kang-heewon ]
