@@ -119,10 +119,10 @@ if __name__ == "__main__":
         list_em_texto.write("file '" + os.path.join(TMP_DIR, file) + "'\n")
     list_em_texto.close()
 
-    subprocess.run(["ffmpeg -f concat -safe 0 -i list_parts.tmp -c copy %s.mp4" % vod_id])
+    subprocess.run(["ffmpeg", "-f", "concat", "-safe", "0", "-i", "list_parts.tmp", "-c", "copy", "%s.mp4" % vod_id])
 
-    shutil.rmtree(os.path.join(os.getcwd(), "tmp"), ignore_errors=True)
+    #shutil.rmtree(os.path.join(os.getcwd(), "tmp"), ignore_errors=True)
 
-    os.remove("list_parts.tmp")
+    #os.remove("list_parts.tmp")
 
     print("\n> COMPLETED <\n")
