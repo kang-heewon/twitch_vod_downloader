@@ -16,6 +16,8 @@ python3 main.py
 15:11초 160p30 기준 영상 다운로드 12.7136초
 
 5:31:13초 1080p60 기준 영상 다운로드 4331.1421초 ( 1시간 20분 정도 )
+## 스크린샷
+![screenshot](https://raw.githubusercontent.com/kang-heewon/twitch_vod_downloader/master/screenshot.png)
 
 ## developer
 * kang-heewon [ https://github.com/kang-heewon ]
