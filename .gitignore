@@ -1,4 +1,7 @@
 venv/
 list_parts.tmp
 tmp/
-*.mp4w
+*.mp4
+main.spec
+build/
+dist/
