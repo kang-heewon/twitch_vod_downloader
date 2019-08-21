@@ -110,8 +110,6 @@ class MyApp(QWidget):
 
     def get_video(self, links):
         for link in links:
-            self.text.append(link)
-            self.text.repaint()
             r = requests.get(link)
             self.record_file(os.path.join(os.getcwd(), TMP_DIR, str(link.split('/')[-1])), r.content, True)
 
@@ -168,7 +166,7 @@ class MyApp(QWidget):
         for file in list_files:
             list_em_texto.write("file '" + os.path.join(TMP_DIR, file) + "'\n")
         list_em_texto.close()
-        stream = ffmpeg.input('list_parts.tmp', format='concat')
+        stream = ffmpeg.input('list_parts.tmp', format='concat', safe=0)
         stream = ffmpeg.output(stream, vod_id+'.mp4', codec='copy')
         stream = ffmpeg.overwrite_output(stream)
         ffmpeg.run(stream)
